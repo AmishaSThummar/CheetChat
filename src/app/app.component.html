@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>CheetChat</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand navbar-light bg-light">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a routerLink="/registeration"><img src="../assets/logo.jpg" style="width: 50px; height: 50px;"/></a>
+          
+        </li>
+        <li><h3 style="color:rgb(5, 62, 142)">CheetChat</h3></li>
+        <li *ngIf="!isLoggedIn()" class="nav-item active">
+          <a class="nav-link" routerLink="/registeration">Registeration</a>
+        </li>
+        <li *ngIf="!isLoggedIn()" class="nav-item active">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        
+        <li *ngIf="isLoggedIn()" class="nav-item active">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+        <li *ngIf="isLoggedIn()" class="nav-item active">
+         
+            <a class="nav-link" routerLink="/chat">Chat</a>
+          
+        </li>
+        
+        <li *ngIf="isLoggedIn()" class="nav-item active float-right" style="padding-left: 220%;">
+          <a routerLink="/viewProfile"><img src="{{userProfile}}" style="width: 50px; height: 50px; border-radius: 25px;"/></a>
+        </li>
+        <li *ngIf="isLoggedIn()" class="nav-item active float-right" style="padding-top: 2%; padding-right: 5%;"><h5>{{userName}}</h5></li>
+        <!-- <li *ngIf="isLoggedIn()" class="nav-item active float-right">
+          <a class="nav-link" routerLink="/viewProfile">View Profile</a>
+        </li> -->
+        <li *ngIf="isLoggedIn()" class="nav-item active float-right">
+          <a class="nav-link" routerLink="/logout">Logout</a>
+        </li>
+
+       
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</body>
+</html>

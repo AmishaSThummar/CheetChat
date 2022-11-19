@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheetchat</title>
+</head>
+
+<body>
+    <div class="border border-secondary box">
+        <button class="btn tetx-center text-dark btn-outline-primary" (click)="getContacts()"
+            style="width: 50%;">Contacts</button>
+        <button class="btn text-center text-dark btn-outline-primary" (click)="getGroups()"
+            style="width: 50%;">Groups</button>
+        <form *ngIf="!isGroup" [formGroup]="addForm" class="container-fluid m-2">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Add your contact here" formControlName="friendName"
+                    (change)="changeState()">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-circle-plus"
+                        (click)="addContact()"></i></span>
+            </div>
+        </form>
+        <form *ngIf="isGroup" [formGroup]="groupForm" class="container-fluid mb-2 mt-1">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Create group" formControlName="groupName">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-users-line"
+                        (click)="createGroup()"></i></span>
+            </div>
+        </form>
+        <div *ngIf="state!=''" class="alert alert-danger" role="alert">
+            {{state}}
+        </div>
+        <form *ngIf="!isGroup" [formGroup]="searchForm" class="container-fluid mb-1">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search your contact here" formControlName="name"
+                    (input)="onSearch()">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" style="color: grey;"
+                            (click)="onSearch()"></i></span>
+                </div>
+            </div>
+        </form>
+        <div *ngIf="isGroup">
+            <div *ngFor="let group of groups.entries()" class="list-group overflow-auto mt-1" style="list-style: none;">
+                <div class="ml-1 mr-1 p-1 border ">
+                    <li (click)="getGroupChat(group)">
+                        <img src="../../assets/group-icon.png" class="rounded" style="height: 7vh;width: 7vh;">
+                        {{group[1]}}
+                    </li>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="!isGroup">
+            <div *ngIf="!search">
+                <div *ngFor="let friend of friendsNP.entries()" class="list-group overflow-auto"
+                    style="list-style: none;">
+                    <div class="row ml-1 mr-1 p-1 border ">
+                        <div class="col-10">
+                            <li *ngIf="friend" (click)="getChat(friend)">
+                                <img src="{{friend[1]}}" class="rounded" style="height: 7vh;width: 7vh;">
+                                {{friend[0]}}
+                            </li>
+                        </div>
+                        <div class="col-2">
+                            <i class="fa-sharp fa-solid fa-trash text-danger mx-auto"
+                                (click)="deleteContact(friend[0])"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div *ngIf="search && !isGroup" style="height: 60vh;">
+            <div *ngFor="let friend of searchFriends.entries()" class="list-group overflow-auto"
+                style="list-style: none;">
+
+                <div class="row ml-1 mr-1 p-1 border view overlay">
+                    <div class="col-10">
+                        <li (click)="getChat(friend)">
+                            <img src="{{friend[1]}}" class="rounded" style="height: 7vh;width: 7vh;">
+                            {{friend[0]}}
+                        </li>
+                    </div>
+                    <!-- <div class="col-2">
+                        <i class="fa-sharp fa-solid fa-trash text-danger mx-auto"
+                            (click)="deleteContact(friend[0])"></i>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

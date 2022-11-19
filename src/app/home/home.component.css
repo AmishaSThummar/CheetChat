@@ -1,0 +1,9 @@
+.right{
+    background-image: url(../../assets/home_background.jpg);
+    height: 85vh;
+    width: 20vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* overflow-x: hidden; */
+}

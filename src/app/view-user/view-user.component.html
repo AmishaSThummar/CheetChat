@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Registeration</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <button (click)="viewUser()">View Profile</button> -->
+        <!-- <ng-component *ngIf="state"> -->
+        <form>
+            <label>Profile Image:</label>
+            <div text-align="center"><img src="{{user.profile}}"
+                    style="width: 70px; height: 70px; border-radius: 50%;" /></div>
+            <div class="form-group">
+                <label>User Name:</label>
+                <input type="text" class="form-control" [value]="user.userName" disabled>
+                <br>
+
+                <label>Email address:</label>
+                <input type="email" class="form-control" [value]="user.email" disabled>
+                <br>
+
+                <label>Mobile Number:</label>
+                <input type="number" class="form-control" [value]="user.mobile" disabled>
+                <br>
+
+                <div class="row">
+                    <div class="col-2">
+                        <a class="nav-link" routerLink="/updateUser" style="text-decoration: none;">
+                            <button class="btn btn-success btn-sm">update account</button>
+                        </a>
+                    </div>
+                    <div class="col-2">
+                        <a class="nav-link" routerLink="/removeUser" style="text-decoration: none;">
+                            <button class="btn btn-danger btn-sm">Remove account</button>
+                        </a>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </form>
+        <!-- </ng-component> -->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Registeration</title>
+</head>
+
+<body>
+    
+    <div class="container">
+        
+        <form [formGroup]="registerationForm" (ngSubmit)="onSubmit()" #register>
+            <div class="form-group">
+                <label>User Name:<sup style="color: red;"> * </sup></label>
+                <input #name type="text" class="form-control" formControlName="userName" (focus)="changeState()">
+                <span *ngIf="userName && userName.touched && userName.invalid" style="color: red;">Username is required
+                </span>
+                <p  [style.color]="'red'">{{status}}</p>
+                <br>
+                
+                <label>Password:<sup style="color: red;"> * </sup></label>
+                <input #passwd type="password" class="form-control" id="password" name="password" formControlName="password">
+                <span *ngIf="password && password.touched && ((passwd.length<6)|| password.invalid)" style="color: red;">Password must be present and is of atleast of 6 characters.
+                </span>
+                <br>
+
+                <label>Email address:<sup style="color: red;"> * </sup></label>
+                <input #mail type="email" class="form-control" id="email" name="email" formControlName="email">
+                <span *ngIf="email && email.touched && email.invalid" style="color: red;">Email must be present.
+                </span>
+                <br>
+
+                <label>Mobile Number:<sup style="color: red;"> * </sup></label>
+                <input #mo type="number" class="form-control" id="mobile" name="mobile" formControlName="mobile">
+                <span *ngIf="mobile && mobile.touched && mobile.invalid" style="color: red;">Mobile number must be present.
+                </span>
+                <br>
+
+                <label class="image-upload-container btn btn-bwm">
+                <span>Select Profile Image:</span>
+                <input #imageInput type="file" class="form-control" (change)="fileChange(imageInput)">
+                </label>
+            </div>
+            <div class="center">
+            <div *ngIf="userName && userName.valid && password && password.valid && email && email.valid && mobile && mobile.valid; else hide">
+                <button type="submit" class="btn btn-success">Sign Up</button>
+            </div>
+            <ng-template #hide>
+                <button type="submit" class="btn btn-success" disabled>Sign Up</button>
+            </ng-template>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.initial{
+    height: 82vh;
+    border-radius:1%;
+    background-image: url('../../assets/chat-home.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.chatBoxWrapper{
+    height: 67vh;
+    /* margin-bottom: 5%; */
+    border-radius: 1%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.messageText{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgb(6, 169, 82);
+    color: white;
+    
+    /* max-width: ; */
+}
+
+.messageBottom{
+    font-size: 12px;
+}
+
+.own .messageText{
+    background-color: rgb(217, 214, 214);
+    color: black;
+}

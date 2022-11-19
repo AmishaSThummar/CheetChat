@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+<body>
+    <p [style.color]="'red'">{{msg}}</p>
+    <div class="container">
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #login>
+            <div class="mb-3">
+              <label class="form-label">User Name<sup style="color: red;">*</sup></label>
+              <input type="text" class="form-control" formControlName="userName" #username>
+              <span *ngIf="userName && userName.touched && userName.invalid" style="color: red;">User Name is required.</span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password<sub style="color: red;">*</sub></label>
+              <input type="password" class="form-control" formControlName="password" #pass>
+              <span *ngIf="password && password.touched && password.invalid" style="color: red;">Password is required.</span>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+
+</body>
+</html>
